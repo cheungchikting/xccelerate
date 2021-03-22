@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UFT-8">
+    <meta name="viewpoint" content="width=`, initial-scale=1.0">
+    <link rel="stylesheet" href="./Style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@700&family=Raleway:wght@600&family=Work+Sans:wght@500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600&family=Work+Sans:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+    .mySlides {display:none}
+    .w3-left, .w3-right, .w3-badge {cursor:pointer}
+    .w3-badge {height:13px;width:13px;padding:0}
+    </style>
+    <title>Justin Cheung</title>
+</head>
+<body>
+    <header>
+        <div id="navbar">
+            <div>
+                <h1>glad you are here.</h1>
+            </div>
+            <div class="links">
+                <a href="./gallery.html" class="wb">Gallery</a>
+                <a href="./Get In Touch.html">Get in touch</a>
+            </div>
+        </div>
+    </header>
+    <section>
+        <div class="container">
+            <img src="./Media/cycling1.jpg" alt="" class="banner">
+            <div class="myself">
+                <div>
+                    <img src="./Media/profile1.jpeg" alt="" class="profilepic">
+                </div>
+                <div>
+                    <h2>Something about me...</h2>
+                    <p>I am a dreamer, ever since I was a child</p>
+                    <p>I dream to be a super hero who can save anyone but myself.</p>
+                    <p>I dream to be a millionaire yet struggling to find happiness.</p>
+                    <p>I can be anyone but yet I am no one.</p>
+                    <p>For all the things I dream to be, here's the place.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container2">
+            <div>
+                <div>
+                    <img src="./Media/cycling.jpg" class="hobbies">
+                </div>
+                <p>I love all kinds of sport.</p>
+                <p>My favourite is basketball.</p>
+                <p>Huge fan of Lebron.</p>
+            </div>
+            <div>
+                <div>
+                    <img src="./Media/profile2.jpeg" class="hobbies">
+                </div>
+                <p>One of the reason to</p>
+                <p>workout everyday.</p>
+                <p>(At least I tried...)</p>
+            </div>
+            <div>
+                <div>
+                    <img src="./Media/mybike.jpg" class="hobbies">
+                </div> 
+                <p>Love taking her out every</p>
+                <p>weekend. Cannot resist the</p>
+                <p>sense of FREEDOM!</p>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="beforenafter">
+            <div class="before">
+                <div class="w3-content w3-display-container" style="max-width:550px">
+                    <img class="mySlides" src="./Media/tableware1.jpg" style="width:100%">
+                    <img class="mySlides" src="./Media/tableware2.jpg" style="width:100%">
+                    <img class="mySlides" src="./Media/tableware3.jpg" style="width:100%">
+                    <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle" style="width:100%">
+                        <div class="w3-left w3-hover-text-khaki" onclick="plusDivs(-1)">&#10094;</div>
+                        <div class="w3-right w3-hover-text-khaki" onclick="plusDivs(1)">&#10095;</div>
+                        <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(1)"></span>
+                        <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(2)"></span>
+                        <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(3)"></span>
+                    </div>
+                </div>
+                <script>
+                    var slideIndex = 1;
+                    showDivs(slideIndex);
+                    
+                    function plusDivs(n) {
+                      showDivs(slideIndex += n);
+                    }
+                    
+                    function currentDiv(n) {
+                      showDivs(slideIndex = n);
+                    }
+                    
+                    function showDivs(n) {
+                      var i;
+                      var x = document.getElementsByClassName("mySlides");
+                      var dots = document.getElementsByClassName("demo");
+                      if (n > x.length) {slideIndex = 1}
+                      if (n < 1) {slideIndex = x.length}
+                      for (i = 0; i < x.length; i++) {
+                        x[i].style.display = "none";  
+                      }
+                      for (i = 0; i < dots.length; i++) {
+                        dots[i].className = dots[i].className.replace(" w3-white", "");
+                      }
+                      x[slideIndex-1].style.display = "block";  
+                      dots[slideIndex-1].className += " w3-white";
+                    }
+                </script>
+                <div class="beforetext">
+                    <h2>What I do before?</h2>
+                    <p>I was in banking industry for 4 years right after college.<br>In 2016, I joined my family tableware trading business.<br>We provide a one-stop solution including<br>design, development, sourcing, QA, etc.<br>Recently trying to move the business from offline to online.</p>
+                </div>
+            </div>
+        </div>
+        <div class="after">
+            <img src="./Media/afterbackground.jpg" class="afterimg">
+            <div class="aftertext">
+                <h2>Why am I here and what's next?</h2>
+                <p>In Chinese, there is a saying "Keeping a business is harder than creating one"<br>Technology is changing the world, we either change with it or we fall behind.<br>I hope I can learn the baiscs after the bootcamp,<br>and have an idea of how I can apply technology to the business,<br>or even create something new.</p>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="foot">
+            <div class="back2top">
+                <a href="#navbar">Back to Top</a>
+            </div>
+            <div class="tne">
+                <a href="tel:90973148">90973148</a>
+                <a href="mailto:cheungchikting@gmail.com">cheungchikting@gmail.com</a>
+            </div>
+            <div class="copyright">
+                <p>© 2021 Cheung Chik Ting. All rights reserved.</p> 
+            </div>
+        </div>
+    </footer>
