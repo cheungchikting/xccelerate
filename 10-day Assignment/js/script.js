@@ -20,7 +20,8 @@ $(function () {
           for (let each of distvacan) {
             for (let item of y[0].results) {
               if(each.park_Id == item.park_Id) {
-                $("#result").append(`<div class='card'>
+                $("#result").append(
+                `<div class='card'>
                 <div class='card-body'>
                 <h4 class='card-title'>${each.name}</h4>
                 <p class='card-text'><strong>Address:</strong> ${each.displayAddress}<br> </p>
