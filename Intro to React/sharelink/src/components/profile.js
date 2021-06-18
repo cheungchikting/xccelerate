@@ -3,7 +3,6 @@ import {
   Card, CardImg, CardText, CardBody,
   CardTitle, 
 } from 'reactstrap';
-import './profile.css'
 import {ModalButton} from './modals';
 
 
