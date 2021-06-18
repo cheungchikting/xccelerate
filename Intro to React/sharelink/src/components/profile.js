@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {
   Card, CardImg, CardText, CardBody,
-  CardTitle, Button, 
+  CardTitle, 
 } from 'reactstrap';
 import './profile.css'
 import {ModalButton} from './modals';
