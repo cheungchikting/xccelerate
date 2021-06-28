@@ -1,23 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FormGroup, Label, Input } from 'reactstrap';
 
+import { useDispatch } from 'react-redux'
+import  { search} from '../reducer/listReducer'
 
-function Filter(props) {
-   return (
-    <FormGroup>
+function Filter() {
+
+  const dispatch = useDispatch()
+
+  return (
+   <FormGroup>
     <Label for="exampleSearch">Search</Label>
-
-    <input
+    <Input
       type="text"
       name="search"
-      id="exampleSearch"
-      placeholder="search placeholder"
-      value={props.searchFilter}
-      // onChange={handleChange}
-      onChange={props.handleFilter}
+      placeholder="search"
+      onChange={(e)=> dispatch(search(e.target.value))}
     />
-    </FormGroup>
-    )
+   </FormGroup>
+   )
 }
 
 export default Filter;

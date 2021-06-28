@@ -1,72 +1,77 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Container, Table } from 'reactstrap';
-import './displayLink.css'
-// import Filter from './filter'
-import { FormGroup, Label, Input } from 'reactstrap';
+import React, { useEffect } from 'react';
+import { Container, Table, Button, Row, Col } from 'reactstrap';
+import './displayLink.css';
+import Profile from './profile'
+import Filter from './filter';
+import { useSelector, useDispatch } from 'react-redux'
+import  { getLinkThunksuccess, getLinkThunkfailure, removeLinkThunksuccess, removeLinkThunkfailure } from '../reducer/listReducer'
+import axios from "redaxios";
 
+function DisplayLink() {
 
-function Filter(props) {
-  return (
-   <FormGroup>
-   <Label for="exampleSearch">Search</Label>
+  const dispatch = useDispatch()
+  const url = useSelector((state) => state.list.url)
+  const search = useSelector((state) => state.list.search)
 
-   <Input
-     type="text"
-     name="search"
-     id="exampleSearch"
-     placeholder="search placeholder"
-     value={props.searchFilter}
-     // onChange={handleChange}
-     onChange={props.handleFilter}
-   />
-   </FormGroup>
-   )
-}
-
-
-function DisplayLink(props) {
-
-  const [searchFilter, setSearchFilter] = useState("")
-
-  function handleFilter(event) {
-    setSearchFilter(event.target.value)
-  }
-
-  let filterlist = props.link.filter((x)=>{
-    console.log(x.url.split('/'))
-    return x.url.toLowerCase().includes(searchFilter.toLowerCase())
+  useEffect(() => {
+    async function getThunk(){
+      try {
+        let data = await axios.get('http://localhost:8000/')
+        dispatch(getLinkThunksuccess(data.data));
+      } catch(error) {
+        dispatch(getLinkThunkfailure(error));
+      }
+    }
+    getThunk()
   })
 
-  console.log(filterlist)
-  // const lessThanThree = filter.length < 3 && <div>hello less than 3</div>
-  // {filter.length >= 3 && <div>hello less than 3</div>}
+  async function click(id){
+      try {
+      await axios.post('http://localhost:8000/remove/', {id: id})
+      dispatch(removeLinkThunksuccess(id));
+      } catch (error) {
+        dispatch(removeLinkThunkfailure(error));
+      };
+  }
 
+  let filterlist = url.filter((x) => {
+    return x.url.toLowerCase().includes(search.toLowerCase())
+  })
 
     return (
-      <Container>
-       <Container fluid className="title">
-         <h1 className="display-3">Links for Sharing</h1>
-       </Container>
-       <Filter searchFilter={searchFilter} handleFilter={handleFilter} />
-       <Table className='table'>
+      <div>
+        <Row>
+        <Col  sm="12" md="3">
+          <Profile name={'Lebron James'} img={'https://www.si.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTgxNjE3MTA0Mzg0OTU5NzQ2/lebron-james-lakers.jpg'}/>
+        </Col>
+        <Col sm="12" md="9">
+        <Container fluid className="title">
+          <h1 className="display-3">Links for Sharing</h1>
+        </Container>
+        <Filter />
+        <Table className='table'>
          <thead>
              <tr>
              <th>#</th>
              <th>URL</th>
+             <th></th>
              </tr>
          </thead>
          <tbody>
-            { filterlist.map((data, index) => {
+            {filterlist.map((data, index) => {
                return (
-            <tr>     
-            <th scope="row">{index + 1}</th>
-            <td><a key={index} href={data.url}>{data.url}</a></td>
+            <tr key={data.id}>     
+            <th  key={data.id} scope="row">{index + 1}</th>
+            <td><a key={data.id} href={data.url}>{data.url}</a></td>
+            <td><Button onClick={() => click(data.id)} color="success">Remove</Button></td>
             </tr>
               )
             })}
          </tbody>
         </Table>
-      </Container>
+        </Col>
+        </Row>
+      </div>
    )
 }
 
